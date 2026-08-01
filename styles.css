@@ -156,6 +156,61 @@ main {
   animation: fadeUp 1s ease both;
 }
 
+.hero-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.left-panel { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+.right-panel { text-align: left; }
+
+.progress-panel {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 10px 30px rgba(3,8,21,0.28);
+}
+
+.progress-panel h4 {
+  margin-bottom: 0.6rem;
+  font-size: 1rem;
+  color: var(--accent-3);
+}
+
+.progress-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+.progress-list li { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
+.unit-name { font-weight: 600; color: var(--text); }
+
+.stars { display: inline-flex; gap: 0.22rem; }
+.stars i { font-size: 1rem; color: rgba(255,255,255,0.28); transition: transform 0.18s ease; }
+.stars i.filled { color: #FFD166; }
+.stars i.empty { color: rgba(255,255,255,0.22); }
+
+.progress-panel:hover { transform: translateY(-4px); }
+
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .right-panel { text-align: center; }
+  .photo-ring { margin: 0 auto; }
+}
+
+/* Star hover and focus animations */
+.stars i:hover,
+.stars i:focus {
+  transform: scale(1.18) translateY(-2px);
+  filter: drop-shadow(0 6px 10px rgba(255,193,7,0.16));
+  cursor: default;
+}
+
+.stars i:focus {
+  outline: 3px solid rgba(255,193,7,0.12);
+  border-radius: 6px;
+}
+
 .photo-ring {
   width: 220px;
   height: 220px;

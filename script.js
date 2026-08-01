@@ -108,3 +108,48 @@ window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 animateParticles();
 typeLoop();
+
+// --- Progress panel: generar estrellas dinámicamente ---
+const progressData = [
+  { name: 'Unidad 1', rating: 4 },
+  { name: 'Unidad 2', rating: 5 },
+  { name: 'Unidad 3', rating: 4 }
+];
+
+function renderProgress() {
+  const list = document.getElementById('progress-list');
+  if (!list) return;
+  list.innerHTML = '';
+
+  progressData.forEach((item) => {
+    const li = document.createElement('li');
+
+    const name = document.createElement('span');
+    name.className = 'unit-name';
+    name.textContent = item.name;
+
+    const stars = document.createElement('span');
+    stars.className = 'stars';
+    stars.setAttribute('aria-hidden', 'true');
+
+    for (let i = 1; i <= 5; i += 1) {
+      const star = document.createElement('i');
+      if (i <= item.rating) {
+        star.className = 'fa-solid fa-star filled';
+      } else {
+        star.className = 'fa-regular fa-star empty';
+      }
+      star.tabIndex = 0;
+      stars.appendChild(star);
+    }
+
+    // Accessibility: readable label per unit
+    li.setAttribute('aria-label', `${item.name}: ${item.rating} de 5 estrellas`);
+
+    li.appendChild(name);
+    li.appendChild(stars);
+    list.appendChild(li);
+  });
+}
+
+renderProgress();
