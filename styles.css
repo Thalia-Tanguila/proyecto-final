@@ -1,12 +1,12 @@
 :root {
-  --bg-dark: #050816;
-  --bg-deep: #120c2d;
-  --accent: #39b5ff;
-  --accent-2: #8b5cf6;
-  --accent-3: #7dd3fc;
-  --panel: rgba(255, 255, 255, 0.12);
-  --text: #f7f9ff;
-  --muted: rgba(247, 249, 255, 0.75);
+  --bg-dark: #18051b;
+  --bg-deep: #2c0f2f;
+  --accent: #ff5ca8;
+  --accent-2: #ff7eb6;
+  --accent-3: #ffd0e6;
+  --panel: rgba(255, 255, 255, 0.14);
+  --text: #fff4fa;
+  --muted: rgba(255, 244, 250, 0.78);
 }
 
 * {
@@ -23,9 +23,9 @@ body {
   font-family: 'Poppins', sans-serif;
   color: var(--text);
   background:
-    radial-gradient(circle at top left, rgba(57, 181, 255, 0.22), transparent 24%),
-    radial-gradient(circle at bottom right, rgba(139, 92, 246, 0.26), transparent 28%),
-    linear-gradient(135deg, var(--bg-dark), var(--bg-deep) 55%, #0b1332);
+    radial-gradient(circle at top left, rgba(255, 92, 168, 0.28), transparent 24%),
+    radial-gradient(circle at bottom right, rgba(255, 126, 182, 0.24), transparent 28%),
+    linear-gradient(135deg, var(--bg-dark), var(--bg-deep) 55%, #3b1238);
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
@@ -48,7 +48,7 @@ body::before {
   height: 320px;
   top: -80px;
   left: -60px;
-  background: rgba(57, 181, 255, 0.45);
+  background: rgba(255, 92, 168, 0.5);
 }
 
 body::after {
@@ -56,7 +56,7 @@ body::after {
   height: 280px;
   right: -50px;
   bottom: 40px;
-  background: rgba(129, 140, 248, 0.35);
+  background: rgba(255, 182, 212, 0.38);
   animation-delay: -4s;
 }
 
@@ -81,7 +81,7 @@ body::after {
   align-items: center;
   padding: 0.9rem 1.15rem;
   border-radius: 999px;
-  background: rgba(7, 13, 33, 0.45);
+  background: rgba(34, 8, 30, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(16px);
   box-shadow: 0 12px 35px rgba(4, 8, 22, 0.28);
@@ -115,7 +115,7 @@ body::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(57, 181, 255, 0.22), rgba(139, 92, 246, 0.24));
+  background: linear-gradient(135deg, rgba(255, 92, 168, 0.28), rgba(255, 126, 182, 0.24));
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -129,7 +129,7 @@ body::after {
 .nav-links a:focus-visible {
   color: white;
   transform: translateY(-2px);
-  box-shadow: 0 0 18px rgba(57, 181, 255, 0.22);
+  box-shadow: 0 0 18px rgba(255, 92, 168, 0.24);
 }
 
 main {
@@ -163,7 +163,7 @@ main {
   padding: 8px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--accent), var(--accent-2), var(--accent-3));
-  box-shadow: 0 0 30px rgba(57, 181, 255, 0.3);
+  box-shadow: 0 0 30px rgba(255, 92, 168, 0.32);
   animation: float 4s ease-in-out infinite;
 }
 
@@ -203,7 +203,7 @@ main {
   text-decoration: none;
   color: white;
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  box-shadow: 0 0 22px rgba(57, 181, 255, 0.3);
+  box-shadow: 0 0 22px rgba(255, 92, 168, 0.35);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -212,7 +212,7 @@ main {
 .cta:hover,
 .cta:focus-visible {
   transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 0 32px rgba(57, 181, 255, 0.38);
+  box-shadow: 0 0 32px rgba(255, 92, 168, 0.4);
 }
 
 .cta::before {
@@ -280,7 +280,7 @@ main {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(57, 181, 255, 0.12), rgba(139, 92, 246, 0.12));
+  background: linear-gradient(135deg, rgba(255, 92, 168, 0.18), rgba(255, 126, 182, 0.16));
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -366,7 +366,7 @@ footer {
 .social-links a:hover,
 .social-links a:focus-visible {
   transform: translateY(-4px) scale(1.08);
-  box-shadow: 0 0 18px rgba(57, 181, 255, 0.24);
+  box-shadow: 0 0 18px rgba(255, 92, 168, 0.26);
 }
 
 @keyframes fadeUp {
@@ -383,10 +383,10 @@ footer {
 @keyframes float {
   0%,
   100% {
-    transform: translateY(0);
+    transform: translateY(0) rotate(0deg);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-12px) rotate(2deg);
   }
 }
 
@@ -397,20 +397,30 @@ footer {
     opacity: 0.35;
   }
   50% {
-    transform: scale(1.08);
-    opacity: 0.55;
+    transform: scale(1.1);
+    opacity: 0.62;
+  }
+}
+
+@keyframes softPulse {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-3px) scale(1.03);
   }
 }
 
 @keyframes glowPulse {
   0%,
   100% {
-    opacity: 0.5;
-    transform: scale(0.96);
+    opacity: 0.48;
+    transform: scale(0.94);
   }
   50% {
-    opacity: 0.85;
-    transform: scale(1.04);
+    opacity: 0.9;
+    transform: scale(1.06);
   }
 }
 
