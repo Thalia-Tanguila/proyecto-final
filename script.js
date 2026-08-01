@@ -40,7 +40,7 @@ function animateParticles() {
 
     ctx.beginPath();
     ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(125, 211, 252, ${particle.alpha})`;
+    ctx.fillStyle = `rgba(255,105,180, ${particle.alpha})`;
     ctx.fill();
 
     for (let next = index + 1; next < particles.length; next += 1) {
@@ -51,7 +51,7 @@ function animateParticles() {
         ctx.beginPath();
         ctx.moveTo(particle.x, particle.y);
         ctx.lineTo(other.x, other.y);
-        ctx.strokeStyle = `rgba(255,255,255,${0.08 * (1 - distance / 120)})`;
+        ctx.strokeStyle = `rgba(255,182,212,${0.06 * (1 - distance / 120)})`;
         ctx.stroke();
       }
     }
@@ -181,20 +181,17 @@ const topicsData = {
   unidad1: [
     { title: 'Tema 1', desc: 'Breve descripción del Tema 1.', link: 'tema1.html' },
     { title: 'Tema 2', desc: 'Breve descripción del Tema 2.', link: 'tema2.html' },
-    { title: 'Tema 3', desc: 'Breve descripción del Tema 3.', link: 'tema3.html' },
-    { title: 'Tema 4', desc: 'Breve descripción del Tema 4.', link: 'tema4.html' }
+    { title: 'Tema 3', desc: 'Breve descripción del Tema 3.', link: 'tema3.html' }
   ],
   unidad2: [
     { title: 'Tema 1', desc: 'Descripción del Tema 1 de la Unidad 2.', link: 'tema1.html' },
     { title: 'Tema 2', desc: 'Descripción del Tema 2 de la Unidad 2.', link: 'tema2.html' },
-    { title: 'Tema 3', desc: 'Descripción del Tema 3 de la Unidad 2.', link: 'tema3.html' },
-    { title: 'Tema 4', desc: 'Descripción del Tema 4 de la Unidad 2.', link: 'tema4.html' }
+    { title: 'Tema 3', desc: 'Descripción del Tema 3 de la Unidad 2.', link: 'tema3.html' }
   ],
   unidad3: [
     { title: 'Tema 1', desc: 'Descripción del Tema 1 de la Unidad 3.', link: 'tema1.html' },
     { title: 'Tema 2', desc: 'Descripción del Tema 2 de la Unidad 3.', link: 'tema2.html' },
-    { title: 'Tema 3', desc: 'Descripción del Tema 3 de la Unidad 3.', link: 'tema3.html' },
-    { title: 'Tema 4', desc: 'Descripción del Tema 4 de la Unidad 3.', link: 'tema4.html' }
+    { title: 'Tema 3', desc: 'Descripción del Tema 3 de la Unidad 3.', link: 'tema3.html' }
   ]
 };
 
@@ -261,3 +258,26 @@ document.querySelectorAll('.topics-toggle').forEach((tg) => {
     renderTopics(unitKey);
   });
 });
+
+// --- Back to top button ---
+function createBackToTop() {
+  const btn = document.createElement('button');
+  btn.className = 'back-to-top';
+  btn.innerHTML = '<i class="fa-solid fa-chevron-up"></i>';
+  btn.style.opacity = '0';
+  btn.setAttribute('aria-label', 'Volver arriba');
+  document.body.appendChild(btn);
+
+  let visible = false;
+  window.addEventListener('scroll', () => {
+    const show = window.scrollY > 420;
+    if (show && !visible) { btn.style.opacity = '1'; visible = true; }
+    if (!show && visible) { btn.style.opacity = '0'; visible = false; }
+  });
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+createBackToTop();
