@@ -192,6 +192,25 @@ main {
 
 .progress-panel:hover { transform: translateY(-4px); }
 
+.hidden { display: none !important; }
+
+.toggle-group { display: inline-flex; gap: 0.4rem; margin-bottom: 0.6rem; }
+.toggle-btn {
+  padding: 0.38rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.04);
+  color: var(--muted);
+  border: 1px solid rgba(255,255,255,0.04);
+  cursor: pointer;
+  font-weight: 600;
+}
+.toggle-btn.active,
+.toggle-btn:focus {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: white;
+  box-shadow: 0 8px 22px rgba(255,92,168,0.16);
+}
+
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; }
   .right-panel { text-align: center; }

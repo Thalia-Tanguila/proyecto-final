@@ -8,14 +8,19 @@
   </head>
   <body>
     <main>
-      <section class="content-section">
+      <section class="content-section" data-unit="unidad2">
         <div class="section-heading">
           <span class="eyebrow">Unidad 2</span>
           <h2>Temas de la Unidad 2</h2>
           <p>Selecciona un tema para ver su contenido.</p>
         </div>
 
-        <div class="topic-grid">
+        <div class="toggle-group topics-toggle" aria-label="Ver temas">
+          <button id="btn-topics-static-u2" class="toggle-btn active">Estática</button>
+          <button id="btn-topics-dynamic-u2" class="toggle-btn">Dinámica</button>
+        </div>
+
+        <div id="topic-list-static-u2" class="topic-grid">
           <article class="tema-card">
             <div>
               <h3>Tema 1</h3>
@@ -56,6 +61,8 @@
             </div>
           </article>
         </div>
+
+        <div id="topic-list-dynamic-u2" class="topic-grid hidden" aria-live="polite"></div>
 
         <div class="unit-actions">
           <a class="btn" href="/index.html">Volver al portafolio</a>

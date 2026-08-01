@@ -153,3 +153,111 @@ function renderProgress() {
 }
 
 renderProgress();
+
+// Toggle entre versión estática y dinámica del panel de progreso
+const btnStatic = document.getElementById('btn-static');
+const btnDynamic = document.getElementById('btn-dynamic');
+const progressStatic = document.getElementById('progress-static');
+const progressDynamic = document.getElementById('progress-list');
+
+function setProgressView(isDynamic) {
+  if (progressStatic) progressStatic.classList.toggle('hidden', isDynamic);
+  if (progressDynamic) progressDynamic.classList.toggle('hidden', !isDynamic);
+  if (btnStatic && btnDynamic) {
+    btnStatic.classList.toggle('active', !isDynamic);
+    btnDynamic.classList.toggle('active', isDynamic);
+    btnStatic.setAttribute('aria-selected', String(!isDynamic));
+    btnDynamic.setAttribute('aria-selected', String(isDynamic));
+  }
+}
+
+if (btnStatic && btnDynamic) {
+  btnStatic.addEventListener('click', () => setProgressView(false));
+  btnDynamic.addEventListener('click', () => { renderProgress(); setProgressView(true); });
+}
+
+// --- Topics: permitir vista estática y dinámica por unidad ---
+const topicsData = {
+  unidad1: [
+    { title: 'Tema 1', desc: 'Breve descripción del Tema 1.', link: 'tema1.html' },
+    { title: 'Tema 2', desc: 'Breve descripción del Tema 2.', link: 'tema2.html' },
+    { title: 'Tema 3', desc: 'Breve descripción del Tema 3.', link: 'tema3.html' },
+    { title: 'Tema 4', desc: 'Breve descripción del Tema 4.', link: 'tema4.html' }
+  ],
+  unidad2: [
+    { title: 'Tema 1', desc: 'Descripción del Tema 1 de la Unidad 2.', link: 'tema1.html' },
+    { title: 'Tema 2', desc: 'Descripción del Tema 2 de la Unidad 2.', link: 'tema2.html' },
+    { title: 'Tema 3', desc: 'Descripción del Tema 3 de la Unidad 2.', link: 'tema3.html' },
+    { title: 'Tema 4', desc: 'Descripción del Tema 4 de la Unidad 2.', link: 'tema4.html' }
+  ],
+  unidad3: [
+    { title: 'Tema 1', desc: 'Descripción del Tema 1 de la Unidad 3.', link: 'tema1.html' },
+    { title: 'Tema 2', desc: 'Descripción del Tema 2 de la Unidad 3.', link: 'tema2.html' },
+    { title: 'Tema 3', desc: 'Descripción del Tema 3 de la Unidad 3.', link: 'tema3.html' },
+    { title: 'Tema 4', desc: 'Descripción del Tema 4 de la Unidad 3.', link: 'tema4.html' }
+  ]
+};
+
+function renderTopics(unitKey) {
+  const suffix = 'u' + unitKey.replace('unidad', '');
+  const dynId = `topic-list-dynamic-${suffix}`;
+  const dynContainer = document.getElementById(dynId);
+  if (!dynContainer) return;
+  dynContainer.innerHTML = '';
+
+  const list = topicsData[unitKey] || [];
+  list.forEach((t) => {
+    const article = document.createElement('article');
+    article.className = 'tema-card';
+
+    const inner = document.createElement('div');
+    const h3 = document.createElement('h3');
+    h3.textContent = t.title;
+    const p = document.createElement('p');
+    p.textContent = t.desc;
+    inner.appendChild(h3);
+    inner.appendChild(p);
+
+    const actions = document.createElement('div');
+    actions.className = 'tema-actions';
+    const a = document.createElement('a');
+    a.className = 'btn';
+    a.href = t.link;
+    a.textContent = 'Abrir';
+    actions.appendChild(a);
+
+    article.appendChild(inner);
+    article.appendChild(actions);
+    dynContainer.appendChild(article);
+  });
+}
+
+// Inicializar toggles en páginas de unidad
+document.querySelectorAll('.topics-toggle').forEach((tg) => {
+  const section = tg.closest('.content-section');
+  if (!section) return;
+  const unitKey = section.dataset.unit;
+  if (!unitKey) return;
+  const suffix = 'u' + unitKey.replace('unidad', '');
+  const btnStaticTopics = document.getElementById(`btn-topics-static-${suffix}`);
+  const btnDynamicTopics = document.getElementById(`btn-topics-dynamic-${suffix}`);
+  const staticContainer = document.getElementById(`topic-list-static-${suffix}`);
+  const dynamicContainer = document.getElementById(`topic-list-dynamic-${suffix}`);
+
+  if (!btnStaticTopics || !btnDynamicTopics || !staticContainer || !dynamicContainer) return;
+
+  btnStaticTopics.addEventListener('click', () => {
+    btnStaticTopics.classList.add('active');
+    btnDynamicTopics.classList.remove('active');
+    staticContainer.classList.remove('hidden');
+    dynamicContainer.classList.add('hidden');
+  });
+
+  btnDynamicTopics.addEventListener('click', () => {
+    btnDynamicTopics.classList.add('active');
+    btnStaticTopics.classList.remove('active');
+    staticContainer.classList.add('hidden');
+    dynamicContainer.classList.remove('hidden');
+    renderTopics(unitKey);
+  });
+});

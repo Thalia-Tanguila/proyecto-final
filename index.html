@@ -33,20 +33,72 @@
     <main>
       <section class="hero" id="hero">
         <div class="hero-card reveal">
-          <div class="photo-ring">
-            <img src="images/perfil.jpeg" alt="Foto personal" />
-          </div>
+          <div class="hero-grid">
+            <div class="left-panel">
+              <div class="photo-ring">
+                <img src="images/perfil.jpeg" alt="Foto personal" />
+              </div>
 
-          <h1>Hola,Me llamo THALIA <span id="typing-text"></span></h1>
-          <div class="contact-info">
-            <p><i class="fa-solid fa-phone"></i> Teléfono: +593 98 765 4321</p>
-            <p><i class="fa-solid fa-heart"></i> Estado civil: Soltera</p>
+              <aside class="progress-panel" aria-labelledby="progreso-title">
+                <h4 id="progreso-title">📊 Progreso de las Unidades</h4>
+
+                <div class="toggle-group" role="tablist" aria-label="Versión de visualización">
+                  <button id="btn-static" class="toggle-btn active" role="tab" aria-selected="true">Estática</button>
+                  <button id="btn-dynamic" class="toggle-btn" role="tab" aria-selected="false">Dinámica</button>
+                </div>
+
+                <!-- Versión estática (se solicitó originalmente) -->
+                <ul id="progress-static" class="progress-list">
+                  <li>
+                    <span class="unit-name">Unidad 1</span>
+                    <span class="stars" aria-hidden="true">
+                      <i class="fa-solid fa-star filled"></i>
+                      <i class="fa-solid fa-star filled"></i>
+                      <i class="fa-solid fa-star filled"></i>
+                      <i class="fa-solid fa-star filled"></i>
+                      <i class="fa-regular fa-star empty"></i>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="unit-name">Unidad 2</span>
+                    <span class="stars" aria-hidden="true">
+                      <i class="fa-solid fa-star filled"></i>
+                      <i class="fa-solid fa-star filled"></i>
+                      <i class="fa-solid fa-star filled"></i>
+                      <i class="fa-solid fa-star filled"></i>
+                      <i class="fa-solid fa-star filled"></i>
+                    </span>
+                  </li>
+                  <li>
+                    <span class="unit-name">Unidad 3</span>
+                    <span class="stars" aria-hidden="true">
+                      <i class="fa-solid fa-star filled"></i>
+                      <i class="fa-solid fa-star filled"></i>
+                      <i class="fa-solid fa-star filled"></i>
+                      <i class="fa-solid fa-star filled"></i>
+                      <i class="fa-regular fa-star empty"></i>
+                    </span>
+                  </li>
+                </ul>
+
+                <!-- Versión dinámica (generada por JS) -->
+                <ul id="progress-list" class="progress-list hidden" aria-live="polite"></ul>
+              </aside>
+            </div>
+
+            <div class="right-panel">
+              <h1>Hola,Me llamo THALIA <span id="typing-text"></span></h1>
+              <div class="contact-info">
+                <p><i class="fa-solid fa-phone"></i> Teléfono: +593 98 765 4321</p>
+                <p><i class="fa-solid fa-heart"></i> Estado civil: Soltera</p>
+              </div>
+              <p class="bio">
+                Soy una persona creativa,tengo 19 año de adad soy de la provincia de sucumbios, estudie en la unida educativa sucumbios de LA BONITA,
+                me encanta el maito de pescado ,soltera.
+              </p>
+              <a href="#unidad1" class="cta">Conocer más</a>
+            </div>
           </div>
-          <p class="bio">
-            Soy una persona creativa,tengo 19 año de adad soy de la provincia de sucumbios, estudie en la unida educativa sucumbios de LA BONITA,
-            me encanta el maito de pescado ,soltera.
-          </p>
-          <a href="#unidad1" class="cta">Conocer más</a>
         </div>
       </section>
 
@@ -107,7 +159,7 @@
             <p>Haz visible la importancia de trabajar en equipo y construir proyectos con impacto.</p>
           </article>
         </div>
-      </section>
+        </section>
 
       <section class="content-section reveal" id="unidad3">
         <div class="section-heading">
