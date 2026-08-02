@@ -1,7 +1,7 @@
 :root {
   --bg-dark: #2b021f;
   --bg-deep: #3a0628;
-  --accent: #FF69B4;
+  --accent: #e01b7e;
   --accent-2: #FF1493;
   --accent-3: #FFC0CB;
   --accent-4: #F8BBD0;
@@ -49,7 +49,7 @@ body::before {
   height: 420px;
   top: -120px;
   left: -80px;
-  background: linear-gradient(135deg, rgba(255,105,180,0.55), rgba(255,20,147,0.36));
+  background: linear-gradient(135deg, rgba(224, 45, 135, 0.55), rgba(255,20,147,0.36));
 }
 
 body::after {
@@ -300,7 +300,7 @@ main {
   text-decoration: none;
   color: white;
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  box-shadow: 0 10px 30px rgba(255,20,147,0.18);
+  box-shadow: 0 10px 30px rgba(218, 46, 138, 0.18);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -335,7 +335,7 @@ main {
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
   color: white;
   border-radius: 12px;
-  box-shadow: 0 12px 30px rgba(255,20,147,0.18);
+  box-shadow: 0 12px 30px rgba(184, 37, 115, 0.18);
   z-index: 1500;
   border: none;
   cursor: pointer;
